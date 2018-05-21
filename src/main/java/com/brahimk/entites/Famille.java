@@ -1,10 +1,14 @@
 package com.brahimk.entites;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Famille implements Serializable{
@@ -26,6 +30,9 @@ public class Famille implements Serializable{
 	private String famCodePostal;	
 	private String famTelUrgence;	
 	private int cotisation;
+	
+	@OneToMany (mappedBy="famille", fetch=FetchType.LAZY)
+	private Collection<Eleve> eleves;
 	
 	
 	public Long getFamId() {
@@ -127,6 +134,14 @@ public class Famille implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Collection<Eleve> getEleves() {
+		return eleves;
+	}
+	public void setEleves(Collection<Eleve> eleves) {
+		this.eleves = eleves;
+	}
+	
 	
 	
 	

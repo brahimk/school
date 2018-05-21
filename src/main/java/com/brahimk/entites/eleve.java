@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,7 +30,12 @@ public class Eleve implements Serializable{
 	private String 	elvSortie;	
 	private String 	elvNiveau;
 	private int 	elvVide;
-	private int 	famId;
+	
+	@ManyToOne
+	@JoinColumn(name="famId")
+	private Famille	famille;
+	
+	
 	private int 	clsId;
 	private int 	cotisation;
 	private String	creneau;
@@ -76,12 +83,6 @@ public class Eleve implements Serializable{
 	public void setElvVide(int elvVide) {
 		this.elvVide = elvVide;
 	}
-	public int getFamId() {
-		return famId;
-	}
-	public void setFamId(int famIid) {
-		this.famId = famIid;
-	}
 	public int getClsId() {
 		return clsId;
 	}
@@ -110,7 +111,7 @@ public class Eleve implements Serializable{
 	}
 	
 	public Eleve(String elvName, String elvPrenom, String elvNumero, Date elvDtNaissance, String elvLieuNaissance, String elvSortie,
-			String elvNiveau, int elvVide, int famIid, int clsId, int cotisation, String creneau) {
+			String elvNiveau, int elvVide, int clsId, int cotisation, String creneau) {
 		super();
 		this.elvName = elvName;
 		this.elvPrenom = elvPrenom;
@@ -120,7 +121,6 @@ public class Eleve implements Serializable{
 		this.elvSortie = elvSortie;
 		this.elvNiveau = elvNiveau;
 		this.elvVide = elvVide;
-		this.famId = famIid;
 		this.clsId = clsId;
 		this.cotisation = cotisation;
 		this.creneau = creneau;
@@ -129,6 +129,12 @@ public class Eleve implements Serializable{
 	public Eleve() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public Famille getFamille() {
+		return famille;
+	}
+	public void setFamille(Famille famille) {
+		this.famille = famille;
 	}
 	
 	

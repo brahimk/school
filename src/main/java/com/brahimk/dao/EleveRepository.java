@@ -24,7 +24,7 @@ public interface EleveRepository extends JpaRepository<Eleve, Long>{
 	
 	
 	/**
-	 * On recherche lélève qui a le numéro "numEleve"
+	 * On recherche l'élève qui a le numéro "numEleve"
 	 * @param dataToSearch
 	 * @return l'élève
 	 */
@@ -32,13 +32,12 @@ public interface EleveRepository extends JpaRepository<Eleve, Long>{
     public Eleve findOneElevFromNum(@Param("numEleve") String numEleve);
 	
 	
-	/* Gestion des élèves par famille */
 	/**
 	 * Recherche les élèves par famille
 	 * @param famid
 	 * @return liste des élèves
 	 */
-	public List<Eleve> findByfamId (int famid);
+	//public List<Eleve> findByfamId (int famid);
 	
 	/**
 	 * Recherche les élèves par famille
@@ -46,7 +45,7 @@ public interface EleveRepository extends JpaRepository<Eleve, Long>{
 	 * @param p
 	 * @return page des élèves trouvés
 	 */
-	public Page<Eleve> findByfamId (int fam_id, Pageable p);
+	//public Page<Eleve> findByfamId (int fam_id, Pageable p);
 		
 	/* Gestion des élèves par classe */
 	/**
