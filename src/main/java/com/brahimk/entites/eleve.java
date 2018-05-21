@@ -10,107 +10,130 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class eleve implements Serializable{
+public class Eleve implements Serializable{
 
 	@Id @GeneratedValue
-	private Long	elv_id;
-	private String 	elv_name;
-	private String 	elv_prenom;
+	private Long	elvId;
+	
+	private int		elvNumero;
+	private String 	elvName;
+	private String 	elvPrenom;
 	
 	@Temporal(TemporalType.DATE)
-	private Date 	elv_dt_naissance;
-	private String	elv_lieu_naissance;
-	private String 	elv_sortie;	
-	private String 	elv_niveau;
-	private int 	elv_vide;
-	private int 	fam_id;
-	private int 	cls_id;
+	private Date 	elvDtNaissance;
+	private String	elvLieuNaissance;
+	private String 	elvSortie;	
+	private String 	elvNiveau;
+	private int 	elvVide;
+	private int 	famId;
+	private int 	clsId;
 	private int 	cotisation;
+	private String	creneau;
 	
-	public Long getElv_id() {
-		return elv_id;
+	
+	public Long getElvId() {
+		return elvId;
 	}
-	public void setElv_id(Long elv_id) {
-		this.elv_id = elv_id;
+	public void setElvId(Long elvId) {
+		this.elvId = elvId;
 	}
-	public String getElv_name() {
-		return elv_name;
+	public String getElvName() {
+		return elvName;
 	}
-	public void setElv_name(String elv_name) {
-		this.elv_name = elv_name;
+	public void setElvName(String elvName) {
+		this.elvName = elvName;
 	}
-	public String getElv_prenom() {
-		return elv_prenom;
+	public String getElvPrenom() {
+		return elvPrenom;
 	}
-	public void setElv_prenom(String elv_prenom) {
-		this.elv_prenom = elv_prenom;
+	public void setElvPrenom(String elvPrenom) {
+		this.elvPrenom = elvPrenom;
 	}
-	public Date getElv_dt_naissance() {
-		return elv_dt_naissance;
+	public Date getElvDtNaissance() {
+		return elvDtNaissance;
 	}
-	public void setElv_dt_naissance(Date elv_dt_naissance) {
-		this.elv_dt_naissance = elv_dt_naissance;
+	public void setElvDtNaissance(Date elvDtNaissance) {
+		this.elvDtNaissance = elvDtNaissance;
 	}
-	public String getElv_lieu_naissance() {
-		return elv_lieu_naissance;
+	public String getElvLieuNaissance() {
+		return elvLieuNaissance;
 	}
-	public void setElv_lieu_naissance(String elv_lieu_naissance) {
-		this.elv_lieu_naissance = elv_lieu_naissance;
+	public void setElvLieuNaissance(String elvLieuNaissance) {
+		this.elvLieuNaissance = elvLieuNaissance;
 	}
-	public String getElv_sortie() {
-		return elv_sortie;
+	public String getElvSortie() {
+		return elvSortie;
 	}
-	public void setElv_sortie(String elv_sortie) {
-		this.elv_sortie = elv_sortie;
+	public void setElvSortie(String elvSortie) {
+		this.elvSortie = elvSortie;
 	}
-	public String getElv_niveau() {
-		return elv_niveau;
+	public String getElvNiveau() {
+		return elvNiveau;
 	}
-	public void setElv_niveau(String elv_niveau) {
-		this.elv_niveau = elv_niveau;
+	public void setElvNiveau(String elvNiveau) {
+		this.elvNiveau = elvNiveau;
 	}
-	public long getElv_vide() {
-		return elv_vide;
+	public int getElvVide() {
+		return elvVide;
 	}
-	public void setElv_vide(int elv_vide) {
-		this.elv_vide = elv_vide;
+	public void setElvVide(int elvVide) {
+		this.elvVide = elvVide;
 	}
-	public long getFam_id() {
-		return fam_id;
+	public int getFamId() {
+		return famId;
 	}
-	public void setFam_id(int fam_id) {
-		this.fam_id = fam_id;
+	public void setFamId(int famIid) {
+		this.famId = famIid;
 	}
-	public long getCls_id() {
-		return cls_id;
+	public int getClsId() {
+		return clsId;
 	}
-	public void setCls_id(int cls_id) {
-		this.cls_id = cls_id;
+	public void setClsId(int clsId) {
+		this.clsId = clsId;
 	}
-	public long getCotisation() {
+	public int getCotisation() {
 		return cotisation;
 	}
 	public void setCotisation(int cotisation) {
 		this.cotisation = cotisation;
 	}
-	public eleve(String elv_name, String elv_prenom, Date elv_dt_naissance, String elv_lieu_naissance,
-			String elv_sortie, String elv_niveau, int elv_vide, int fam_id, int cls_id, int cotisation) {
-		super();
-		this.elv_name = elv_name;
-		this.elv_prenom = elv_prenom;
-		this.elv_dt_naissance = elv_dt_naissance;
-		this.elv_lieu_naissance = elv_lieu_naissance;
-		this.elv_sortie = elv_sortie;
-		this.elv_niveau = elv_niveau;
-		this.elv_vide = elv_vide;
-		this.fam_id = fam_id;
-		this.cls_id = cls_id;
-		this.cotisation = cotisation;
+		
+	public int getElvNumero() {
+		return elvNumero;
 	}
-	public eleve() {
+	public void setElvNumero(int elvNumero) {
+		this.elvNumero = elvNumero;
+	}
+		
+	public String getCreneau() {
+		return creneau;
+	}
+	public void setCreneau(String creneau) {
+		this.creneau = creneau;
+	}
+	
+	public Eleve(String elvName, String elvPrenom, int elvNumero, Date elvDtNaissance, String elvLieuNaissance, String elvSortie,
+			String elvNiveau, int elvVide, int famIid, int clsId, int cotisation, String creneau) {
+		super();
+		this.elvName = elvName;
+		this.elvPrenom = elvPrenom;
+		this.elvNumero = elvNumero;
+		this.elvDtNaissance = elvDtNaissance;
+		this.elvLieuNaissance = elvLieuNaissance;
+		this.elvSortie = elvSortie;
+		this.elvNiveau = elvNiveau;
+		this.elvVide = elvVide;
+		this.famId = famIid;
+		this.clsId = clsId;
+		this.cotisation = cotisation;
+		this.creneau = creneau;
+	}
+	
+	public Eleve() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 }
