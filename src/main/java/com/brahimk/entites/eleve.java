@@ -3,19 +3,22 @@ package com.brahimk.entites;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@Table(name = "eleve")
 public class Eleve implements Serializable{
 
-	@Id @GeneratedValue
-	private Long	elvId;
+	private static final long serialVersionUID = 2724950272592227855L;
+
+	@Id	@Column(unique=true)
+	private String	elvNumero;
 	
-	private int		elvNumero;
 	private String 	elvName;
 	private String 	elvPrenom;
 	
@@ -31,12 +34,6 @@ public class Eleve implements Serializable{
 	private String	creneau;
 	
 	
-	public Long getElvId() {
-		return elvId;
-	}
-	public void setElvId(Long elvId) {
-		this.elvId = elvId;
-	}
 	public String getElvName() {
 		return elvName;
 	}
@@ -98,10 +95,10 @@ public class Eleve implements Serializable{
 		this.cotisation = cotisation;
 	}
 		
-	public int getElvNumero() {
+	public String getElvNumero() {
 		return elvNumero;
 	}
-	public void setElvNumero(int elvNumero) {
+	public void setElvNumero(String elvNumero) {
 		this.elvNumero = elvNumero;
 	}
 		
@@ -112,7 +109,7 @@ public class Eleve implements Serializable{
 		this.creneau = creneau;
 	}
 	
-	public Eleve(String elvName, String elvPrenom, int elvNumero, Date elvDtNaissance, String elvLieuNaissance, String elvSortie,
+	public Eleve(String elvName, String elvPrenom, String elvNumero, Date elvDtNaissance, String elvLieuNaissance, String elvSortie,
 			String elvNiveau, int elvVide, int famIid, int clsId, int cotisation, String creneau) {
 		super();
 		this.elvName = elvName;
