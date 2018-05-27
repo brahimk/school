@@ -1,0 +1,74 @@
+<div class="container">
+  <h1 class="well" style="text-align: center">Ajouter une nouvelle famille</h1>
+  <div class="col-lg-12 well">
+    <div class="row">
+      <form  id="form_famille" >
+        <div class="col-sm-12">
+          <div class="form-group" style="text-align: center">
+            <div class="col-md-12">
+              <label class="radio-inline col-md-3">
+                <input type="radio" name="typeInscription" [(ngModel)]="typeInscription" value=Inscription required>Inscription* </label>
+              <label class="radio-inline col-md-3">
+                <input type="radio"  name="typeInscription" [(ngModel)]="typeInscription" value=Réinscription required>Réinscription*</label>
+            </div>
+          </div>
+          <div class="row" style="width:800px">
+            <div class="col-sm-6 form-group">
+              <label>Prénom*</label>
+              <input type="text" placeholder="Entrez un prénom .." class="form-control" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <label>Nom*</label>
+              <input type="text" placeholder="Entrez un nom .." class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <textarea placeholder="Entrez une addresse .." rows="2" class="form-control"></textarea>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>Ville</label>
+              <input type="text" placeholder="Entrez une ville .." class="form-control">
+            </div>
+            <div class="col-sm-6 form-group">
+              <label>Code postal</label>
+              <input type="text" placeholder="Entrez un code postal .." class="form-control">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>Téléphone 1*</label>
+              <input type="text" placeholder="Entrez un numéro de Téléphone .." class="form-control" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <label>Téléphone 2</label>
+              <input type="text" placeholder="Entrez un numéro de Téléphone .." class="form-control">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>Email*</label>
+              <input type="text" placeholder="Entrez une adresse email .." class="form-control" required>
+            </div>
+            <div class="col-sm-6 form-group">
+              <label>Cotisation*</label>
+              <input type="text" placeholder="Entrez la cotisation de la famille .." class="form-control" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <button type="button" class="btn btn-lg btn-info" (click)="EnregistrerFamille($event)">Enregistrer la famille</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="famSaved">
+    <app-add-eleve [famId]="famId" >    
+    </app-add-eleve>
+</div>

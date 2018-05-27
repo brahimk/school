@@ -38,7 +38,8 @@ public class SchoolController {
 	@RequestMapping(value = "/eleves", method = RequestMethod.GET)
 	Page<Eleve> getAllEleves( @RequestParam(name="page", defaultValue="0") int page,
 							  @RequestParam(name="size", defaultValue="100") int size) {
-		return eleveRepo.findAll( PageRequest.of(page, size));
+		Page<Eleve> pgElev = eleveRepo.findAll( PageRequest.of(page, size));
+		return pgElev;
 	}
 
 	/**

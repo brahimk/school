@@ -13,4 +13,8 @@ export class PagehomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  clickRechercher( val ) {
+    console.log( 'Tu souhaites rechercher : ' + val.value);
+    val.value = '';
+  }
 }

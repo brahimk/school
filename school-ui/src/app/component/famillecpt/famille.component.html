@@ -1,0 +1,37 @@
+
+
+<div class="container maxTaille">
+<table class="table table-striped col-md-12">  
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prenom</th>
+      <th scope="col">Téléphone 1</th>
+      <th scope="col">Téléphone 2</th>
+      <th scope="col">Mail</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Ville</th>
+      <th scope="col">Code postal</th>
+      <th scope="col">N° Urgence</th>
+      <th scope="col">Cotisation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let famille of this.schooServ.dataFamilles">
+      <td>{{famille.famId}}</td>
+      <td>{{famille.famName}}</td>
+      <td>{{famille.famPrenom}}</td>
+      <td>{{famille.famTel1}}</td>
+      <td>{{famille.famTel2}}</td>
+      <td>{{famille.famMail}}</td>
+      <td>{{famille.famAdresse}}</td>
+      <td>{{famille.famVille}}</td>
+      <td>{{famille.famCodePostal}}</td>
+      <td>{{famille.famTelUrgence}}</td>
+      <td>{{famille.cotisation}}</td>
+      <td>{{famille.eleves}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>

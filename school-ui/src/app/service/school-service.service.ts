@@ -21,29 +21,32 @@ export class SchoolService {
 
   constructor(public httpClient: HttpClient) { }
 
-  //private rootAPIUrl = serveurApi.url + serveurApi.context;
+  // private rootAPIUrl = serveurApi.url + serveurApi.context;
   private rootAPIUrl = 'http://localhost:8080/' + serveurApi.context;
   private familles = 'familles';
   private eleves = 'eleves';
 
+  public dataEleves ;
+  public dataFamilles ;
+
+  public creneaux = [ 'Mercredi matin', 'Mercredi après-midi',
+                        'Samedi matin', 'Samedi après-midi',
+                        'Dimanche matin', 'Dimanche après-midi'];
 
 /*
    * Permet de récupérer tous les élèves disponibles
    */
-  getListEleves():Observable<any[]> {
+  getListEleves(): any {
     const myUrl = this.rootAPIUrl + this.eleves;
-    return this.httpClient.get(myUrl);
+     return this.httpClient.get(myUrl);
   }
 
   /*
    * Permet de récupérer toutes les familles disponibles
    */
-  getListFamilles() {
+  getListFamilles(): any {
     const myUrl = this.rootAPIUrl + this.familles;
-    return this.httpClient.get(myUrl).subscribe(
-      (data: Famille[]) => { ({ ...data })}, // success path
-      error => console.log (error) // error path
-    );
+     return this.httpClient.get(myUrl);
   }
 
 }

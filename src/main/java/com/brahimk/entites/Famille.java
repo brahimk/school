@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Famille implements Serializable{
@@ -31,6 +33,7 @@ public class Famille implements Serializable{
 	private String famTelUrgence;	
 	private int cotisation;
 	
+	@JsonIgnore
 	@OneToMany (mappedBy="famille", fetch=FetchType.LAZY)
 	private Collection<Eleve> eleves;
 	

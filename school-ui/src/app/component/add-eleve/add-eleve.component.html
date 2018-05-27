@@ -1,0 +1,74 @@
+<br>
+<div id="parent" >
+  <form id="form_eleve" class="form-horizontal">
+    <div class="control-group">
+      <div class="controls form-inline">
+        <table class="container table table-striped col-md-12">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Numéro</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Prenom</th>
+              <th scope="col">Date de Naissance</th>
+              <th scope="col">Niveau</th>
+              <th scope="col">Créneau</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let eleveACreer of lstElevesACreer;let indexElev = index">
+              <td *ngIf="!eleveACreer.editable;else editEleve">{{eleveACreer.elvNumero}}</td>
+              <td *ngIf="!eleveACreer.editable" >{{eleveACreer.elvName}}</td>
+              <td *ngIf="!eleveACreer.editable" >{{eleveACreer.elvPrenom}}</td>
+              <td *ngIf="!eleveACreer.editable" >{{eleveACreer.elvDtNaissance}}</td>
+              <td *ngIf="!eleveACreer.editable" >{{eleveACreer.elvNiveau}}</td>
+              <td *ngIf="!eleveACreer.editable" >{{eleveACreer.creneau}}</td>
+              <td *ngIf="!eleveACreer.editable" >
+                  <button type=button (click)="EditEleve(eleveACreer)">
+                      <i class="fa fa-edit"></i>
+                  </button>                      
+              </td>
+
+              <ng-template #editEleve>
+                  <td> <input type="text" #Numero class="form-control" value="{{eleveACreer.elvNumero}}" required></td>
+                  <td> <input type="text" #Prenom class="form-control" value="{{eleveACreer.elvName}}" required></td>
+                  <td> <input type="text" #Nom class="form-control" value="{{eleveACreer.elvPrenom}}" required></td>
+                  <td> <input type="text" #DateNaissance class="form-control" value="{{eleveACreer.elvDtNaissance}}" required></td>
+                  <td> <input type="text" #Niveau class="form-control" value="{{eleveACreer.elvNiveau}}"></td>
+                  <td>
+                      <select name="creneau" class="form-control" #creneau required>
+                        <option [ngValue]="null" disabled>Choisir un créneau</option>
+                        <option *ngFor="let creneau of schoolService.creneaux" [ngValue]="eleveACreer.creneau">{{creneau}}</option>
+                      </select>
+                  <td>
+                      <button type=button (click)="SaveEleve(eleveACreer, Numero?.value, Prenom?.value, Nom?.value, DateNaissance?.value, Niveau?.value, creneau?.value)">
+                          <i class="fa fa-save"></i>
+                      </button>
+                  </td>
+              </ng-template>
+
+            </tr>
+            <tr>
+              <td> <input type="text" #Numero placeholder="Entrez son numéro .." class="form-control" required></td>
+              <td> <input type="text" #Prenom placeholder="Entrez son prénom .." class="form-control" required></td>
+              <td> <input type="text" #Nom placeholder="Entrez son nom .." class="form-control" required></td>
+              <td> <input type="text" #DateNaissance placeholder="Entrez sa date de naissance .." class="form-control" required></td>
+              <td> <input type="text" #Niveau placeholder="Entrez son niveau .." class="form-control"></td>
+              <td>
+                <select name="creneau" class="form-control" #creneau required>
+                  <option [ngValue]="null" disabled>Choisir un créneau</option>
+                  <option *ngFor="let creneau of schoolService.creneaux" [ngValue]="creneau">{{creneau}}</option>
+                </select>
+              </td>
+              <td> <button type=button (click)="AjouterEleve(Numero, Prenom, Nom, DateNaissance, Niveau, creneau)">
+                  <i class="fa fa-user-plus"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </form>
+</div>

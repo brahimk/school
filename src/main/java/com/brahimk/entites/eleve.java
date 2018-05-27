@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "eleve")
 public class Eleve implements Serializable{
@@ -31,6 +33,7 @@ public class Eleve implements Serializable{
 	private String 	elvNiveau;
 	private int 	elvVide;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="famId")
 	private Famille	famille;
