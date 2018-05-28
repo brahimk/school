@@ -24,6 +24,7 @@ export class SchoolService {
   // private rootAPIUrl = serveurApi.url + serveurApi.context;
   private rootAPIUrl = 'http://localhost:8080/' + serveurApi.context;
   private familles = 'familles';
+  private famille = 'famille';
   private eleves = 'eleves';
 
   public dataEleves ;
@@ -47,6 +48,22 @@ export class SchoolService {
   getListFamilles(): any {
     const myUrl = this.rootAPIUrl + this.familles;
      return this.httpClient.get(myUrl);
+  }
+
+  /*
+   * Permet de sauvegarder toutes les familles
+   */
+  saveListFamilles(familles: Famille[]): any {
+    const myUrl = this.rootAPIUrl + this.familles;
+     return this.httpClient.post(myUrl, familles);
+  }
+
+  /*
+   * Permet de sauvegarder toutes les familles
+   */
+  saveFamille(famille: Famille): any {
+    const myUrl = this.rootAPIUrl + this.famille;
+     return this.httpClient.post(myUrl, famille);
   }
 
 }

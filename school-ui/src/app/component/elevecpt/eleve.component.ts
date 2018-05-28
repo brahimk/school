@@ -17,7 +17,7 @@ export class EleveComponent implements OnInit {
         this.schooServ.dataEleves = data2.content;
         console.log(data2.content);
       }
-      );
+    );
   }
 
 }

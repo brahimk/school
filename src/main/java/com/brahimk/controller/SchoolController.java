@@ -145,6 +145,16 @@ public class SchoolController {
 	}
 	
 	/**
+	 * Méthode de création des familles
+	 * @param lstFamilles
+	 * @return Liste des familles insérées
+	 */
+	@RequestMapping(value = "/famille", method = RequestMethod.POST)
+	Famille saveFamille( @RequestBody Famille famille) {
+		return familleRepo.save(famille);
+	}
+	
+	/**
 	 * Méthode d'update de la fiche d'un famille
 	 * @param famille
 	 * @return famille mise à jour

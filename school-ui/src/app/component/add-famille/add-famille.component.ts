@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Famille } from '../../model/famille.model';
+import { SchoolService } from '../../service/school-service.service';
 
 @Component({
   selector: 'app-add-famille',
@@ -8,13 +9,14 @@ import { Famille } from '../../model/famille.model';
 })
 export class AddFamilleComponent implements OnInit {
 
-  constructor() { }
+  constructor(public schoolService: SchoolService) { }
 
   private lstFamillesACreer: Famille[] = [];
 
   private typeInscription: string;
   private famSaved: boolean;
-  public famId = '';
+  public  famId = '';
+  private newFamille: Famille;
 
   ngOnInit() {
   }
@@ -23,6 +25,7 @@ export class AddFamilleComponent implements OnInit {
     debugger;
     if ( typeof(formFamille) === 'undefined' || null === formFamille) {
       alert ('Merci de remplir correctement le formulaire de la famille !! ');
+      return;
     }
 
     const frmTypeInscription    = formFamille.target.form[0];
@@ -44,24 +47,34 @@ export class AddFamilleComponent implements OnInit {
       !frmTelephone2.validity.valid || !frmMail.validity.valid ||
       !frmCotisation.validity.valid) {
         alert ('Merci de remplir correctement le formulaire de la famille !! ');
+        return;
       }
 
-    this.lstFamillesACreer.push(new Famille().deserialize({
-      famName: frmNom.value,
-      famPrenom: frmPrenom.value,
-      famCivilite: '',
-      famTel1: frmTelephone1.value,
-      famTel2: frmTelephone2.value,
-      famMail: frmMail.value,
-      famTypeInscript: this.typeInscription,
-      famAdresse: frmAdresse.value,
-      famVille: frmVille.value,
-      famCodePostal: frmCodePostal.value,
-      famTelUrgence: frmTelephone1.value,
-      cotisation: frmCotisation.value
-    }));
+      this.newFamille = new Famille().deserialize({
+        famName: frmNom.value,
+        famPrenom: frmPrenom.value,
+        famCivilite: '',
+        famTel1: frmTelephone1.value,
+        famTel2: frmTelephone2.value,
+        famMail: frmMail.value,
+        famTypeInscript: this.typeInscription,
+        famAdresse: frmAdresse.value,
+        famVille: frmVille.value,
+        famCodePostal: frmCodePostal.value,
+        famTelUrgence: frmTelephone1.value,
+        cotisation: frmCotisation.value
+      });
 
-    this.famSaved = true;
+    this.lstFamillesACreer.push(this.newFamille);
+
+    const lstFamilles = this.schoolService.saveFamille(this.newFamille).subscribe(
+      data2 => {
+        this.newFamille.famId = data2.famId;
+        this.famId = data2.famId;
+        this.famSaved = true;
+        console.log(this.newFamille);
+      }
+    );
   }
 
 }
